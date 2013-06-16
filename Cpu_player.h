@@ -31,12 +31,6 @@ public:
 			set_money(get_money()-STAKES_STEP);
 		}
 	};
-/*	void open_cards(){
-		cout<<get_name()<<":"<<endl;
-		for(int i=0; i<5; ++i)get_on_hands()[i]->show();
-		cout<<"****************************"<<endl;
-	};
-*/
 //**************************************************************************************************
 //Перегружаем виртуальную функцию проверки на флеш, это лучше сделать, т.к.
 //для человеческого игрока важно лишь распознать собранный флеш,
@@ -50,12 +44,7 @@ public:
 		suits[4]=0;
 //Решаем, карт какой масти больше остальных:
 		int fin_suit = find_max(suits,4);
-/*
-		int fs1 = suits[fin_suit]--;
-		int fs2 = find_max(suits,4);
-		if(fs1 = fs2){}
 
-*/
 	//В комбинацию идут карты выбранной масти и, разумеется, джокеры:
 		for(int i=0;i<5;++i)
 			{
@@ -90,19 +79,11 @@ public:
 		clear_combo();
 	//Если собрана чистая пара, остановимся на ней, если же в ней есть джокер, возможны лучшие варианты:
 		if(check_for_jokers()==-1&&is_clear_pair()){choose_cards_to_change();return;}
-//отладочная информация:
-/*		cout<<"in combo now:"<<endl;
-		cout<<"for Kare - "<<in_combo_now[0]<<endl;
-		cout<<"for full_house - "<<in_combo_now[1]<<endl;
-		cout<<"for flush - "<<in_combo_now[2]<<endl;
-		cout<<"for straight - "<<in_combo_now[3]<<endl;
-		cout<<"for three - "<<in_combo_now[4]<<endl;*/
-//
-		if(in_combo_now[0]>in_combo_now[1]){/*cout<<"I'm going to gather Kare"<<endl;*/is_clear_four_of_a_kind();choose_cards_to_change();return;}
-		if(in_combo_now[1]>in_combo_now[2]){/*cout<<"I'm going to gather full house"<<endl;*/is_clear_full_house();choose_cards_to_change();return;}
-		if((in_combo_now[2]>=in_combo_now[3])&&(in_combo_now[2]>2)){/*cout<<"I'm going to gather flush"<<endl;*/is_clear_flush();choose_cards_to_change();return;}
-		if((in_combo_now[3]>in_combo_now[4])&&(in_combo_now[3]>2)){/*cout<<"I'm going to gather straight"<<endl;*/is_clear_straight();choose_cards_to_change();return;}
-		else 	{/*cout<<"I'm going to gather three"<<endl;*/is_clear_three_of_a_kind();choose_cards_to_change();return;}
+		if(in_combo_now[0]>in_combo_now[1]){is_clear_four_of_a_kind();choose_cards_to_change();return;}
+		if(in_combo_now[1]>in_combo_now[2]){is_clear_full_house();choose_cards_to_change();return;}
+		if((in_combo_now[2]>=in_combo_now[3])&&(in_combo_now[2]>2)){is_clear_flush();choose_cards_to_change();return;}
+		if((in_combo_now[3]>in_combo_now[4])&&(in_combo_now[3]>2)){is_clear_straight();choose_cards_to_change();return;}
+		else 	{is_clear_three_of_a_kind();choose_cards_to_change();return;}
 	};
 };
 //**************************************************************************************************
