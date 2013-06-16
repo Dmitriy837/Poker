@@ -125,7 +125,7 @@ public:
 	dynamic_cast<Human_player*>(_players[0])->init_cards(cards);
 	dynamic_cast<Human_player*>(_players[0])->init_balances(balances);
 	//отладки ради, посмотрим у кого что:
-		open_cards();
+
 		i = 0;
 	//выбираем какие карты меняем:
 		while(i < count_players){
@@ -150,8 +150,6 @@ public:
 			++i;
 		}
 		i = start_player;
-	//покажем дяде разработчику, что вышло:
-		open_cards();
 	//спрашиваем, кто повышает ставки:
 		while(i < count_players + start_player){
 			if(init_up_stakes(i%count_players)){
@@ -188,47 +186,6 @@ public:
 			}
 			cout<<"_________________________________"<<endl;
 			cout<<"bal"<<i<<_players[i]->get_money()<<endl;
-			++i;
-		}
-//*************************************************
-//*Красочная отладочная информация*****************
-//*************************************************
-/*
-cout<<"_____________________"<<endl;
-cout<<"Four:"<<_players[0]->is_clear_four_of_a_kind();
-cout<<"\t";
-cout<<"\t";
-_players[0]->print_in_combo();
-cout<<"Full house:"<<_players[0]->is_clear_full_house();
-cout<<"\t";
-_players[0]->print_in_combo();
-cout<<"Flush:"<<_players[0]->is_clear_flush();
-cout<<"\t";
-cout<<"\t";
-_players[0]->print_in_combo();
-cout<<"Straight:"<<_players[0]->is_clear_straight();
-cout<<"\t";
-_players[0]->print_in_combo();
-cout<<"Three:"<<_players[0]->is_clear_three_of_a_kind();
-cout<<"\t";
-cout<<"\t";
-_players[0]->print_in_combo();
-cout<<"Two pairs:"<<_players[0]->is_clear_two_pairs();
-cout<<"\t";
-_players[0]->print_in_combo();
-cout<<"Pair:"<<_players[0]->is_clear_pair();
-cout<<"\t";
-cout<<"\t";
-_players[0]->print_in_combo();*/
-//*****************************************************
-	};
-//**************************************************************************************************
-//Искренне надеюсь, что консольная версия демонстрации карт останется отладочной:
-//**************************************************************************************************
-	void open_cards(){
-		int i = 0;
-		while(i < count_players){
-			_players[i]->open_cards();
 			++i;
 		}
 	};
@@ -298,17 +255,6 @@ _players[0]->print_in_combo();*/
 //**************************************************************************************************
 	void agree_up_stakes(int i){
 		_players[i]->agree_up_stakes(i,player_in_game[i],res[i]._combo,count_players,stakes,in_game);
-	/*	if(!player_in_game[i])return;
-		player_in_game[i] = (((res[i]._combo*STAKES_STEP+START_STAKES)*count_players-stakes>0)||rand()%2);
-		if(!player_in_game[i]){
-			in_game--;
-			cout<<"player"<<i<<" is pass((("<<endl;
-		}
-		else{
-			cout<<"player"<<i<<" agree to up stakes"<<endl;
-			stakes+=STAKES_STEP;
-			_players[i]->set_money(_players[i]->get_money()-STAKES_STEP);
-		}*/
 	};
 };
 //**************************************************************************************************

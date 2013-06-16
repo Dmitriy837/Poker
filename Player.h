@@ -21,23 +21,12 @@ public:
 	Card** get_on_hands(){
 		return on_hands;
 	};
-//just for debugging
-//	void set_on_hands(int ind,int card,Deck& my){
-//		on_hands[ind] = my.get_card(card);
-//	}
-//
 	int get_money(){
 		return money;
 	};
 	void set_money(int _money){
 		money = _money;
 	};
-//	COMBO get_combo(){
-//		return current_combo;
-//	};
-//	void set_combo(COMBO gathered){
-//		current_combo = gathered;
-//	};
 	bool* get_to_change(){
 		return to_change;
 	};
@@ -60,18 +49,8 @@ public:
 //Меняем не понравившиеся карты:
 //**************************************************************************************************
 	void change_cards( Deck& _Deck ){
-//		cout<<endl<<"to change:";
-//		for(int i=0; i<5; ++i)cout<<to_change[i];
 		cout<<endl;
 		for(int i=0; i<5; ++i)if(to_change[i])on_hands[i] = _Deck.give_a_card();
-	};
-//**************************************************************************************************
-//Преимущественно отладочная функция открытия карт:
-//**************************************************************************************************
-	virtual void open_cards(){
-		for(int i=0; i<5; ++i)get_on_hands()[i]->show();
-		cout<<"****************************"<<endl;
-//		for(int i=0; i<5; ++i)if(on_hands[i])on_hands[i]->show();
 	};
 //**************************************************************************************************
 //В начале раунда приводим мысли в порядок:
