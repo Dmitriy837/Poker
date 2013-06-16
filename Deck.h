@@ -20,10 +20,4 @@ public:
 		deck[ran]->set_in_deck(false);
 		return deck[ran];
 	}
-//just for debugging
-//	Card * get_card(int i){
-//		deck[i]->set_in_deck(0);
-//		return deck[i];
-//	}
-//
 };
