@@ -169,11 +169,7 @@ bool is_straight(){
 	//...третей:
 		for(int i=0;i<5;++i)
 			for(int j=0;j<5;++j)if(tmp_nom[j]-tmp_nom[2]==i){str3++;break;}
-	//
-	//следующая строчка, по-моему, лишняя:
-	//	if(tmp_nom[4]==12&&tmp_nom[0]==0)str1++;
-//		cout<<"str1:"<<str1<<" str2:"<<str2<<" str3:"<<str3<<endl;
-
+	
 //Какой из этих стритов предпочтительнее собирать:
 		int min_in_combo;//номинал младшей в стрите карты
 		if(str1>str2){
@@ -182,7 +178,6 @@ bool is_straight(){
 			}
 		else if(str2>str3)min_in_combo = tmp_nom[1];
 			else min_in_combo = tmp_nom[2];
-//		cout<<"straight might begin with:"<<min_in_combo<<endl;
 //Отмечаем входящие в комбинацию карты:
 		for(int i=0;i<5;++i)
 			for(int j=0;j<5;++j)if(((get_on_hands()[j])->get_nominal()-min_in_combo)==i){set_in_combo(j);break;}
@@ -204,15 +199,7 @@ bool is_straight(){
 //Так был ли стрит:
 		return count_in_combo()==5;
 	};
-/*
-А вот эта версия из рук вон плоха
-	virtual bool is_straight(){
-		int tmp_nom[5];//тут просто номиналы карт на руках
-		for(int i=0;i<5;++i)tmp_nom[i] = ((get_on_hands()[i])->get_nominal());
-		qsort(tmp_nom,5,sizeof(int),comp);//теперь отсортированные!
-		for(int i=0;i<5;++i)if((tmp_nom[i+1]-tmp_nom[i]!=1)&&(tmp_nom[i+1]!=60))return false;
-		return true;
-};*/
+
 	//ФЛЭШ
 	virtual bool is_flush(){
 		int j=0;
@@ -227,21 +214,6 @@ bool is_straight(){
 		if(is_pair()&&is_three_of_a_kind())return true;
 		clear_combo();
 		return (is_three_of_a_kind()&&is_pair());
-/*		if(!is_three_of_a_kind())return false;
-		int nic1=-1,nic2;
-		for(int i=0;i<5;++i)if(!in_combo[i]){	if(nic1==-1)nic1=i;
-							else nic2=i;};
-		if((on_hands[nic1]->get_nominal())==(on_hands[nic2]->get_nominal())){
-			in_combo[nic1]=1;
-			in_combo[nic2]=1;
-			return true;
-		}
-		return false;*/
-/*		if(!is_two_pairs())return false;
-		int nom,index;
-		for(int i=0;i<5;++i)if(!in_combo[i]){nom=on_hands[i]->get_nominal();index = i;break;}
-		for(int i=0;i<5;++i)if((i!=index)&&(nom==on_hands[i]->get_nominal())){in_combo[i]=1;return true;}
-		return false;*/
 	};
 	//КАРЭ
 	bool is_four_of_a_kind(){
@@ -270,14 +242,6 @@ bool is_straight(){
 	virtual void make_a_choise()=0;
 	virtual int init_up_stakes(const int i,bool& in_game,const int combo,const int count_players,int& stakes)=0;
 	virtual void agree_up_stakes(const int i,bool& in_game,const int combo,const int count_players,int& stakes,int& last_in_game)=0;
-//**************************************************************************************************
-//Исключительно для отладки:
-//**************************************************************************************************
-//	void print_in_combo(){
-//		for(int i=0;i<5;++i)(in_combo[i]?cout<<1:cout<<0);
-//		cout<<endl;
-//	}
-//
 	int highest_in_combo(){
 		int highest=-1;
 		for(int i=0;i<5;++i)
