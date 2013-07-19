@@ -3,8 +3,7 @@ using namespace std;
 #include <stdio.h>
 #include <string>
 #include <string.h>
-#include <stdlib.h>
-#include <time.h>
+
 #include <SFML/Graphics.hpp>
 int find_min(int *mas,int n){
 		int min_ind = 0;
