@@ -7,6 +7,7 @@ GPoker:Card.o Deck.o Player.o Human_player.o Graphical_game.o Cpu_player.o Round
 	(rm Card.o)
 	(rm Deck.o)
 	(rm Player.o)
+	(rm Graphical_game.o)
 	(rm Human_player.o)
 	(rm Cpu_player.o)
 	(rm Round.o)
