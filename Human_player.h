@@ -1,3 +1,5 @@
+#ifndef __HPlayer
+#define __HPlayer
 #include "Player.h"
 #include "Graphical_game.h"
 #include <iostream>
@@ -22,3 +24,4 @@ public:
 	void init_count_players(int count_players);
 	void init_player(int player,int count);	
 };
+#endif

@@ -2,6 +2,7 @@
 Джокер имеет номинал 13, масть 4, нормальные карты - номинал 0 - 12, масть 0 -3.*/
 #ifndef __CARD
 #define __CARD
+
 class Card{
 	int count;
 	bool in_deck;
